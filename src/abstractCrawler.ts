@@ -5,7 +5,7 @@ export abstract class AbstractCrawler<valueG> {
   public abstract crawl(): Promise<valueG>;
 }
 
-export abstract class AbstractAutoCrawler<valueG> extends AbstractCrawler<valueG> {
+abstract class AbstractAutoCrawler<valueG> extends AbstractCrawler<valueG> {
   public ee: NodeJS.EventEmitter = new EventEmitter();
   protected async crawlIteration(): Promise<void> {
     console.info('abstract crawler iteration!');
@@ -34,6 +34,7 @@ export abstract class AbstractAlignedAutoCrawler<valueG> extends AbstractAutoCra
     const alignedDelayMsec = 1000 * 60 * alignedDelayMinutes;
     const nextIterationTimestamp = (Math.floor(Math.max(now, this.lastAlignedIterationTimestamp) / alignedDelayMsec) + 1) * alignedDelayMsec;
     const dt = nextIterationTimestamp - now;
+    console.info(`shedulling crawl in ${(dt / 1000 ).toFixed(0)} seconds!`);
     this.timeout = setTimeout(() => {
       this.lastAlignedIterationTimestamp = nextIterationTimestamp;
       this.crawlIteration();
@@ -56,3 +57,4 @@ export abstract class AbstractSerialAutoCrawler<valueG> extends AbstractAutoCraw
     console.info('abstract crawler init done!');
   }
 }
+

@@ -1,5 +1,5 @@
 {
-  "name": "polidome-backend",
+  "name": "polidome-crawler",
   "version": "0.0.0",
   "description": "",
   "main": "dist/app.js",

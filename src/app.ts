@@ -1,12 +1,15 @@
-import { ForecaCrawledData, ForecaCrawler, GidrometCrawledData, GidrometCrawler, OpenWeatherCrawledData, OpenWeatherCrawler, YandexCrawledData, YandexCrawler } from './crawler';
-import { KeyUdb, Udb } from './udb';
+import { OpenWeatherCrawledData, ForecaCrawledData, YandexCrawledData, GidrometCrawledData } from './shared/udb/crawledData';
+import { OpenWeatherCrawler, ForecaCrawler, YandexCrawler, GidrometCrawler } from './crawler';
+import { KeyUdb, Udb } from './shared/udb/udb';
+
+
 
 class App {
   private udb: Udb = new Udb({
-    openWeatherCrawledData: new KeyUdb<OpenWeatherCrawledData>('udb', 'openWeatherCrawledData'),
-    forecaCrawledData: new KeyUdb<ForecaCrawledData>('udb', 'forecaCrawledData'),
-    yandexCrawledData: new KeyUdb<YandexCrawledData>('udb', 'yandexCrawledData'),
-    gidrometCrawledData: new KeyUdb<GidrometCrawledData>('udb', 'gidrometCrawledData'),
+    openWeatherCrawledData: new KeyUdb<OpenWeatherCrawledData>('src/shared/udb/storage', 'openWeatherCrawledData'),
+    forecaCrawledData: new KeyUdb<ForecaCrawledData>('src/shared/udb/storage', 'forecaCrawledData'),
+    yandexCrawledData: new KeyUdb<YandexCrawledData>('src/shared/udb/storage', 'yandexCrawledData'),
+    gidrometCrawledData: new KeyUdb<GidrometCrawledData>('src/shared/udb/storage', 'gidrometCrawledData'),
   });
   private openWeatherCrawler: OpenWeatherCrawler = new OpenWeatherCrawler();
   private forecaCrawler: ForecaCrawler = new ForecaCrawler();
