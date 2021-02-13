@@ -30,19 +30,23 @@ class App {
     });
   }
   public onOpenWeatherCrawl(openWeatherCrawledData: OpenWeatherCrawledData): void {
-    console.info('app get data from openWeatherCrawler', openWeatherCrawledData);
+    console.info('app get data from openWeatherCrawler');
+    console.debug(openWeatherCrawledData);
     this.udb.keymap.openWeatherCrawledData.addValue(openWeatherCrawledData);
   }
   public onForecaCrawl(forecaCrawledData: ForecaCrawledData): void {
-    console.info('app get data from forecaCrawler', forecaCrawledData);
+    console.info('app get data from forecaCrawler');
+    console.debug(forecaCrawledData);
     this.udb.keymap.forecaCrawledData.addValue(forecaCrawledData);
   }
   public onYandexCrawl(yandexCrawledData: YandexCrawledData): void {
-    console.info('app get data from yandexCrawler', yandexCrawledData);
+    console.info('app get data from yandexCrawler');
+    console.debug(yandexCrawledData);
     this.udb.keymap.yandexCrawledData.addValue(yandexCrawledData);
   }
   public onGidrometCrawl(gidrometCrawledData: GidrometCrawledData): void {
-    console.info('app get data from gidrometCrawler', gidrometCrawledData);
+    console.info('app get data from gidrometCrawler');
+    console.debug(gidrometCrawledData);
     this.udb.keymap.gidrometCrawledData.addValue(gidrometCrawledData);
   }
   async init(): Promise<void> {

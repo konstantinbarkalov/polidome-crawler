@@ -26,7 +26,7 @@ export abstract class AbstractAlignedAutoCrawler<valueG> extends AbstractAutoCra
     console.info('abstract crawler init done!');
   }
   private scheduleCrawlIteration() {
-    const alignedDelayMinutes = 1;
+    const alignedDelayMinutes = 30;
     if (this.timeout) {
       clearTimeout(this.timeout);
     };
@@ -34,6 +34,7 @@ export abstract class AbstractAlignedAutoCrawler<valueG> extends AbstractAutoCra
     const alignedDelayMsec = 1000 * 60 * alignedDelayMinutes;
     const nextIterationTimestamp = (Math.floor(Math.max(now, this.lastAlignedIterationTimestamp) / alignedDelayMsec) + 1) * alignedDelayMsec;
     const dt = nextIterationTimestamp - now;
+    console.info(`---------------------------------------------------`);
     console.info(`shedulling crawl in ${(dt / 1000 ).toFixed(0)} seconds!`);
     this.timeout = setTimeout(() => {
       this.lastAlignedIterationTimestamp = nextIterationTimestamp;
